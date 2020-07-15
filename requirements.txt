@@ -1,0 +1,5 @@
+numpy
+torch
+torchaudio
+torchvision
+pytorch_pretrained_bert
