@@ -2,13 +2,14 @@
 
 [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/jackaduma/LAS_Mandarin_PyTorch)
 
-This code is PyTorch implemented for [**Listen, Attend and Spell**](https://arxiv.org/abs/1508.01211])
+This code is a PyTorch implementation for paper: [**Listen, Attend and Spell**](https://arxiv.org/abs/1508.01211]), a nice work on End-to-End ASR model.
 
 ------
 
-## **LAS**
+## **Listen-Attend-Spell**
 
-### **Google Blog Page:** [Improving End-to-End Models For Speech Recognition](https://ai.googleblog.com/2017/12/improving-end-to-end-models-for-speech.html)
+### **Google Blog Page** 
+[Improving End-to-End Models For Speech Recognition](https://ai.googleblog.com/2017/12/improving-end-to-end-models-for-speech.html)
 
 The LAS architecture consists of 3 components. The listener encoder component, which is similar to a standard AM, takes the a time-frequency representation of the input speech signal, x, and uses a set of neural network layers to map the input to a higher-level feature representation, henc. The output of the encoder is passed to an attender, which uses henc to learn an alignment between input features x and predicted subword units {yn, … y0}, where each subword is typically a grapheme or wordpiece. Finally, the output of the attention module is passed to the speller (i.e., decoder), similar to an LM, that produces a probability distribution over a set of hypothesized words.
 
@@ -18,7 +19,6 @@ The LAS architecture consists of 3 components. The listener encoder component, w
 ")
 
 Components of the LAS End-to-End Model.
-
 
 
 ------
@@ -34,19 +34,18 @@ Components of the LAS End-to-End Model.
 
 ## **Table of Contents**
 
-- [](#)
 - [**LAS_Mandarin_PyTorch**](#las_mandarin_pytorch)
-- [**LAS**](#las)
-  - [**Google Blog Page**](#publication-page)
-- [**Table of Contents**](#table-of-contents)
-- [**Requirement**](#requirement)
-- [**Usage**](#usage)
-  - [**preprocess**](#preprocess)
-  - [**train**](#train)
-- [**Pretrained**](#pretrained)
-- [**Demo**](#demo)
-- [**TodoList**](#todolist)
-- [**License**](#license)
+  - [**Listen-Attend-Spell**](#listen-attend-spell)
+    - [**Google Blog Page**](#google-blog-page)
+  - [**Table of Contents**](#table-of-contents)
+  - [**Requirement**](#requirement)
+  - [**Usage**](#usage)
+    - [**preprocess**](#preprocess)
+    - [**train**](#train)
+  - [**Pretrained**](#pretrained)
+  - [**Demo**](#demo)
+  - [**TodoList**](#todolist)
+  - [**License**](#license)
 
 
 ------
