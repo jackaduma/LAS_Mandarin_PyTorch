@@ -115,7 +115,7 @@ python main.py --config ./config/aishell_asr_example_lstm4atthead1.yaml --test
 
 a pretrained model training on AISHELL-Dataset
 
-download from [Google Drive](https://drive.google.com/file/d/1iamizL98NWIPw4pw0nF-7b6eoBJrxEfj/view?usp=sharing)
+download from [Google Drive](https://drive.google.com/file/d/1Lcu6aFdoChvKEHuBs5_efNSk5edVkeyR/view?usp=sharing)
 
 ------
 
