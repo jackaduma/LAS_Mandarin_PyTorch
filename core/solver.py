@@ -63,7 +63,7 @@ class BaseSolver(object):
             self.max_step = config['hparas']['max_step']
 
             self.verbose('Exp. name : {}'.format(self.exp_name))
-            self.verbose('Loading data... large corpus may took a while.')
+            self.verbose('Loading data... large dataset may took a while.')
 
         elif mode == 'test':
             # Output path

@@ -40,7 +40,8 @@ def collect_audio_batch(batch, audio_transform, mode):
     # Descending audio length within each batch
     audio_len, file, audio_feat, text = zip(*[(feat_len, f_name, feat, txt)
                                               for feat_len, f_name, feat, txt in
-                                              sorted(zip(audio_len, file, audio_feat, text), reverse=True, key=lambda x: x[0])])
+                                              sorted(zip(audio_len, file, audio_feat, text), reverse=True,
+                                                     key=lambda x: x[0])])
     # Zero-padding
     audio_feat = pad_sequence(audio_feat, batch_first=True)
     text = pad_sequence(text, batch_first=True)
@@ -71,15 +72,13 @@ def create_dataset(tokenizer, ascending, name, path, bucketing, batch_size,
                    train_split=None, dev_split=None, test_split=None):
     print("Interface for creating all kinds of dataset")
 
-    # Recognize corpus
+    # Recognize dataset
     if name.lower() == "librispeech":
-        from corpus.librispeech import LibriDataset as Dataset
+        from dataset.librispeech import LibriDataset as Dataset
+        print("import LibriDataset as Dataset")
     elif name.lower() == "aishell":
-        from corpus.aishell import AishellDataset as Dataset
+        from dataset.aishell import AishellDataset as Dataset
         print("import AishellDataset as Dataset")
-    elif name.lower() == "digital":
-        from corpus.digital_data import DigitalDataset as Dataset
-        print("import DigitalDataset as Dataset")
     else:
         raise NotImplementedError
 
@@ -118,15 +117,13 @@ def create_textset(tokenizer, train_split, dev_split, name, path, bucketing, bat
     ''' Interface for creating all kinds of text dataset'''
     msg_list = []
 
-    # Recognize corpus
+    # Recognize dataset
     if name.lower() == "librispeech":
-        from corpus.librispeech import LibriTextDataset as Dataset
+        from dataset.librispeech import LibriTextDataset as Dataset
+        print("import LibriTextDataset as Dataset")
     elif name.lower() == "aishell":
-        from corpus.aishell import AishellTextDataset as Dataset
+        from dataset.aishell import AishellTextDataset as Dataset
         print("import AishellTextDataset as Dataset")
-    elif name.lower() == "digital":
-        from corpus.digital_data import DigitalTextDataset as Dataset
-        print("import DigitalTextDataset as Dataset")
     else:
         raise NotImplementedError
 

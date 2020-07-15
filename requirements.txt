@@ -1,5 +1,14 @@
 numpy
-torch
-torchaudio
 torchvision
 pytorch_pretrained_bert
+tqdm
+pandas
+future
+joblib
+pyyaml
+sentencepiece
+tb-nightly
+torch>=1.2.0
+torchaudio
+matplotlib
+editdistance
