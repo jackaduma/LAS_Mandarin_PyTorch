@@ -2,20 +2,23 @@
 
 [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/jackaduma/LAS_Mandarin_PyTorch)
 
-## **Listen, attend and spell Model**
-
-This code is PyTorch implemented for [Listen, Attend and Spell](https://arxiv.org/abs/1508.01211])
+This code is PyTorch implemented for [**Listen, Attend and Spell**](https://arxiv.org/abs/1508.01211])
 
 ------
 
 ## **LAS**
 
-### [**Publication Page**](https://research.google/pubs/pub44926/)
+### **Google Blog Page:** [Improving End-to-End Models For Speech Recognition](https://ai.googleblog.com/2017/12/improving-end-to-end-models-for-speech.html)
+
+The LAS architecture consists of 3 components. The listener encoder component, which is similar to a standard AM, takes the a time-frequency representation of the input speech signal, x, and uses a set of neural network layers to map the input to a higher-level feature representation, henc. The output of the encoder is passed to an attender, which uses henc to learn an alignment between input features x and predicted subword units {yn, … y0}, where each subword is typically a grapheme or wordpiece. Finally, the output of the attention module is passed to the speller (i.e., decoder), similar to an LM, that produces a probability distribution over a set of hypothesized words.
 
 
+![Components of the LAS End-to-End Model.
+](https://4.bp.blogspot.com/-D26UVY-JPh4/WjK9bo6LVtI/AAAAAAAACRk/ABz4VpV0uvUywryKqaaIXgFz4w-JukTegCLcBGAs/s640/image1.png "Components of the LAS End-to-End Model.
+")
 
+Components of the LAS End-to-End Model.
 
-![network](http://www.kecl.ntt.co.jp/people/kaneko.takuhiro/projects/cyclegan-vc2/images/network.png "network")
 
 
 ------
@@ -32,9 +35,9 @@ This code is PyTorch implemented for [Listen, Attend and Spell](https://arxiv.or
 ## **Table of Contents**
 
 - [](#)
-- [**LAS_Mandarin_PyTorch2**](#las_mandarin_pytorch2)
+- [**LAS_Mandarin_PyTorch**](#las_mandarin_pytorch)
 - [**LAS**](#las)
-  - [**Publication Page**](#publication-page)
+  - [**Google Blog Page**](#publication-page)
 - [**Table of Contents**](#table-of-contents)
 - [**Requirement**](#requirement)
 - [**Usage**](#usage)
@@ -117,4 +120,4 @@ Samples:
 
 ## **License**
 
-[Apache2.0](LICENSE) © Kun
+[MIT](LICENSE) © Kun
