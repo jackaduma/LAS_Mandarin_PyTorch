@@ -28,7 +28,7 @@ parser.add_argument('--seed', default=0, type=int,
                     help='Random seed for reproducable results.', required=False)
 parser.add_argument('--cudnn-ctc', action='store_true',
                     help='Switches CTC backend from torch to cudnn')
-parser.add_argument('--njobs', default=1, type=int,
+parser.add_argument('--njobs', default=32, type=int,
                     help='Number of threads for dataloader/decoding.', required=False)
 parser.add_argument('--cpu', action='store_true', help='Disable GPU training.')
 parser.add_argument('--no-pin', action='store_true',
@@ -79,6 +79,7 @@ else:
 
         mode = 'train'
 
+print("\nUsing {} mode\n".format(mode))
 solver = Solver(config, paras, mode)
 solver.load_data()
 solver.set_model()
