@@ -2,7 +2,7 @@
 
 [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/jackaduma/LAS_Mandarin_PyTorch)
 
-This code is a PyTorch implementation for paper: [**Listen, Attend and Spell**](https://arxiv.org/abs/1508.01211]), a nice work on End-to-End ASR model.
+This code is a PyTorch implementation for paper: [**Listen, Attend and Spell**](https://arxiv.org/abs/1508.01211]), a nice work on End-to-End ASR, Speech Recognition model.
 
 ------
 
@@ -42,7 +42,10 @@ Components of the LAS End-to-End Model.
   - [**Usage**](#usage)
     - [**preprocess**](#preprocess)
     - [**train**](#train)
+    - [**test**](#test)
   - [**Pretrained**](#pretrained)
+    - [**English**](#english)
+    - [**Chinese Mandarin**](#chinese-mandarin)
   - [**Demo**](#demo)
   - [**TodoList**](#todolist)
   - [**License**](#license)
@@ -61,31 +64,31 @@ pip install -r requirements.txt
 ### **preprocess**
 
 ```python
-python preprocess_training.py
-```
-is short for
-
-```python
-python preprocess_training.py --train_A_dir ./data/S0913/ --train_B_dir ./data/gaoxiaosong/ --cache_folder ./cache/
+python generate_vab_file.py
 ```
 
 
 ### **train** 
+
 ```python
-python train.py
+python main.py
 ```
 
-is short for
+### **test**
 
 ```python
-python train.py --logf0s_normalization ./cache/logf0s_normalization.npz --mcep_normalization ./cache/mcep_normalization.npz --coded_sps_A_norm ./cache/coded_sps_A_norm.pickle --coded_sps_B_norm ./cache/coded_sps_B_norm.pickle --model_checkpoint ./model_checkpoint/ --resume_training_at ./model_checkpoint/_CycleGAN_CheckPoint --validation_A_dir ./data/S0913/ --output_A_dir ./converted_sound/S0913 --validation_B_dir ./data/gaoxiaosong/ --output_B_dir ./converted_sound/gaoxiaosong/
+python main.py
 ```
 
 ------
 
 ## **Pretrained**
 
-a pretrained model which converted between S0913 and GaoXiaoSong
+### **English**
+
+### **Chinese Mandarin**
+
+a pretrained model training on AISHELL-Dataset
 
 download from [Google Drive](https://drive.google.com/file/d/1iamizL98NWIPw4pw0nF-7b6eoBJrxEfj/view?usp=sharing) <735MB>
 
@@ -108,11 +111,12 @@ Samples:
 ## **TodoList**
 
 - [x] Dataset
-  - [ ] VC
-  - [x] Chinese Male Speakers (S0913 from [AISHELL-Speech](https://openslr.org/33/) & [GaoXiaoSong: a Chinese star](https://en.wikipedia.org/wiki/Gao_Xiaosong))
+  - [ ] [LibriSpeech]() for English Speech Recognition
+  - [x] [AISHELL-Speech](https://openslr.org/33/) for Chinese Mandarin Speech Recognition
 - [x] Usage
   - [x] Training
-  - [x] Example 
+  - [x] Test
+  - [x] Infer 
 - [ ] Demo
 
 ------
