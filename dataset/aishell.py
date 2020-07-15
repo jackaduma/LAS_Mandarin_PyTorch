@@ -23,7 +23,7 @@ def read_text(file):
        it's somewhat redundant for accessing each txt multiplt times,
        but it works fine with multi-thread'''
     # print("read_text: file {}".format(file))
-    src_file = "/opt/pa/datasets/Aishell/" + "transcript/aishell_transcript_v0.8.txt"
+    src_file = "/data/Speech/SLR33/data_aishell/" + "transcript/aishell_transcript_v0.8.txt"
     idx = file.split('/')[-1].split('.')[0]
 
     with open(src_file, 'r') as fp:

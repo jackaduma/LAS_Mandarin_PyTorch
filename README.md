@@ -2,7 +2,10 @@
 
 [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/jackaduma/LAS_Mandarin_PyTorch)
 
-This code is a PyTorch implementation for paper: [**Listen, Attend and Spell**](https://arxiv.org/abs/1508.01211]), a nice work on End-to-End ASR, Speech Recognition model.
+
+This code is a PyTorch implementation for paper: [**Listen, Attend and Spell**](https://arxiv.org/abs/1508.01211]), a nice work on End-to-End **ASR**, **Speech Recognition** model.
+
+also provides a **Chinese Mandarin ASR** pretrained model.
 
 ------
 
@@ -25,10 +28,10 @@ Components of the LAS End-to-End Model.
 
 **This repository contains:**
 
-1. [model code](model_tf.py) which implemented the paper.
-2. [audio preprocessing script](preprocess_training.py) you can use to create cache for [training data](data).
-3. [training scripts](train.py) to train the model.
-4. [Examples of Voice Conversion](converted_sound/) - converted result after training.
+1. [model code](core) which implemented the paper.
+2. [generate vocab file](generate_vocab_file.py), you can use to generate your vocab file for [your dataset](dataset).
+3. [training scripts](train_asr.py) to train the model.
+4. [testing scripts](test_asr.py) to test the model.
 
 ------
 
@@ -64,14 +67,28 @@ pip install -r requirements.txt
 ### **preprocess**
 
 ```python
-python generate_vab_file.py
+python generate_vocab_file_aishell.py --input_file $DATA_DIR/data_aishell/transcript_v0.8.txt --output_file ./aishell_vocab.txt --mode character --vocab_size 5000
 ```
+
+it will create a vocab file named **aishell_vocab.txt** in your folder.
 
 
 ### **train** 
 
+Before training, you need to write your dataset code in package [dataset](dataset).
+
+If you want use my aishell dataset code, you also should take care about the transcripts file path in [data/aishell.py](dataset/aishell.py) line 26:
+
 ```python
-python main.py
+src_file = "/data/Speech/SLR33/data_aishell/" + "transcript/aishell_transcript_v0.8.txt"
+```
+
+When ready. 
+
+Let's train:
+
+```python
+python main.py --config ./config/aishell
 ```
 
 ### **test**
