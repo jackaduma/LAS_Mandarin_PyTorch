@@ -50,6 +50,7 @@ Components of the LAS End-to-End Model.
     - [**English**](#english)
     - [**Chinese Mandarin**](#chinese-mandarin)
   - [**Demo**](#demo)
+  - [**Reference**](#reference)
   - [**TodoList**](#todolist)
   - [**License**](#license)
 
@@ -65,6 +66,9 @@ pip install -r requirements.txt
 ## **Usage**
 
 ### **preprocess**
+
+First, we should generate our vocab file from dataset's transcripts file. Please reference code in [generate_vocab_file.py](generate_vocab_file.py). If you want train aishell data, you can use [generate_vocab_file_aishell.py](generate_vocab_file_aishell.py) directly.
+
 
 ```python
 python generate_vocab_file_aishell.py --input_file $DATA_DIR/data_aishell/transcript_v0.8.txt --output_file ./aishell_vocab.txt --mode character --vocab_size 5000
@@ -87,14 +91,18 @@ When ready.
 
 Let's train:
 
-```python
-python main.py --config ./config/aishell
+```bash
+python main.py --config ./config/aishell_asr_example_lstm4atthead1.yaml
 ```
+
+you can write your config file, please reference [config/aishell_asr_example_lstm4atthead1.yaml](config/aishell_asr_example_lstm4atthead1.yaml)
+
+specific variables: corpus's path & vocab_file
 
 ### **test**
 
-```python
-python main.py
+```bash
+python main.py --config ./config/aishell_asr_example_lstm4atthead1.yaml --test
 ```
 
 ------
@@ -107,7 +115,7 @@ python main.py
 
 a pretrained model training on AISHELL-Dataset
 
-download from [Google Drive](https://drive.google.com/file/d/1iamizL98NWIPw4pw0nF-7b6eoBJrxEfj/view?usp=sharing) <735MB>
+download from [Google Drive](https://drive.google.com/file/d/1iamizL98NWIPw4pw0nF-7b6eoBJrxEfj/view?usp=sharing)
 
 ------
 
@@ -116,24 +124,33 @@ download from [Google Drive](https://drive.google.com/file/d/1iamizL98NWIPw4pw0n
 Samples:
 
 
-[S0913(./data/S0913/BAC009S0913W0351.wav)](https://drive.google.com/file/d/14zU1mI8QtoBwb8cHkNdZiPmXI6Mj6pVW/view?usp=sharing)
-
-[GaoXiaoSong(./data/gaoxiaosong/gaoxiaosong_1.wav)](https://drive.google.com/file/d/1s0ip6JwnWmYoWFcEQBwVIIdHJSqPThR3/view?usp=sharing)
-
-
-
-[Converted from S0913 to GaoXiaoSong (./converted_sound/S0913/BAC009S0913W0351.wav)](https://drive.google.com/file/d/1S4vSNGM-T0RTo_aclxRgIPkUJ7NEqmjU/view?usp=sharing)
+```bash
+python infer.py
+```
 
 ------
+
+## **Reference**
+
+1. [**Listen, Attend and Spell**](https://arxiv.org/abs/1508.01211v2), W Chan et al.
+2. [Neural Machine Translation of Rare Words with Subword Units](http://www.aclweb.org/anthology/P16-1162), R Sennrich et al.
+3. [Attention-Based Models for Speech Recognition](https://arxiv.org/abs/1506.07503), J Chorowski et al.
+4. [Connectionist Temporal Classification: Labelling Unsegmented Sequence Data with Recurrent Neural Networks](https://www.cs.toronto.edu/~graves/icml_2006.pdf), A Graves et al.
+5. [Joint CTC-Attention based End-to-End Speech Recognition using Multi-task Learning](https://arxiv.org/abs/1609.06773), S Kim et al.
+6. [Advances in Joint CTC-Attention based End-to-End Speech Recognition with a Deep CNN Encoder and RNN-LM](https://arxiv.org/abs/1706.02737), T Hori et al.
+
+------
+
 ## **TodoList**
 
 - [x] Dataset
   - [ ] [LibriSpeech]() for English Speech Recognition
   - [x] [AISHELL-Speech](https://openslr.org/33/) for Chinese Mandarin Speech Recognition
 - [x] Usage
-  - [x] Training
-  - [x] Test
-  - [x] Infer 
+  - [x] generate vocab file
+  - [x] training
+  - [x] test
+  - [ ] infer 
 - [ ] Demo
 
 ------
