@@ -4,25 +4,25 @@
 
 [**中文说明**](./README.zh-CN.md) | [**English**](./README.md)
 
-This code is a PyTorch implementation for paper: [**Listen, Attend and Spell**](https://arxiv.org/abs/1508.01211]), a nice work on End-to-End **ASR**, **Speech Recognition** model.
+本项目使用PyTorch复现论文：[**Listen, Attend and Spell**](https://arxiv.org/abs/1508.01211]), 实现了一个端到端的**语音识别， ASR**的深度模型.
 
-also provides a **Chinese Mandarin ASR** pretrained model.
+同时，也提供一个**中文普通话的语音识别 ASR** 的预训练模型.
 
-- [x] Dataset
+- [x] 数据集
   - [ ] [LibriSpeech]() for English Speech Recognition
   - [x] [AISHELL-Speech](https://openslr.org/33/) for Chinese Mandarin Speech Recognition
-- [x] Usage
+- [x] 用法
   - [x] generate vocab file
-  - [x] training
-  - [x] test
-  - [ ] infer 
+  - [x] 训练
+  - [x] 验证
+  - [ ] 推理 
 - [ ] Demo
 
 ------
 
 ## **Listen-Attend-Spell**
 
-### **Google Blog Page** 
+### **谷歌博客主页** 
 
 [Improving End-to-End Models For Speech Recognition](https://ai.googleblog.com/2017/12/improving-end-to-end-models-for-speech.html)
 
@@ -40,77 +40,77 @@ Components of the LAS End-to-End Model.
 
 **This repository contains:**
 
-1. [model code](core) which implemented the paper.
-2. [generate vocab file](generate_vocab_file.py), you can use to generate your vocab file for [your dataset](dataset).
-3. [training scripts](train_asr.py) to train the model.
-4. [testing scripts](test_asr.py) to test the model.
+1. [模型代码](core)复线论文的算法模型.
+2. [创建 vocab 文件](generate_vocab_file.py), 使用该方法来生成自己的 vocab 文件 for [数据集](dataset).
+3. [训练代码](train_asr.py) 来训练模型.
+4. [验证代码](test_asr.py) 来验证模型.
 
 ------
 
-## **Table of Contents**
+## **内容列表**
 
 - [**LAS_Mandarin_PyTorch**](#las_mandarin_pytorch)
   - [**Listen-Attend-Spell**](#listen-attend-spell)
-    - [**Google Blog Page**](#google-blog-page)
-  - [**Table of Contents**](#table-of-contents)
-  - [**Requirement**](#requirement)
-  - [**Usage**](#usage)
-    - [**preprocess**](#preprocess)
-    - [**train**](#train)
-    - [**test**](#test)
-  - [**Pretrained**](#pretrained)
-    - [**English**](#english)
-    - [**Chinese Mandarin**](#chinese-mandarin)
+    - [**谷歌博客主页**](#谷歌博客主页)
+  - [**内容列表**](#内容列表)
+  - [**依赖**](#依赖)
+  - [**用法**](#用法)
+    - [**预处理**](#预处理)
+    - [**训练**](#训练)
+    - [**验证**](#验证)
+  - [**预训练模型**](#预训练模型)
+    - [**英文**](#英文)
+    - [**中文普通话**](#中文普通话)
   - [**Demo**](#demo)
-  - [**Reference**](#reference)
+  - [**引用**](#引用)
   - [**License**](#license)
 
 
 ------
 
 
-## **Requirement** 
+## **依赖** 
 
 ```bash
 pip install -r requirements.txt
 ```
-## **Usage**
+## **用法**
 
-### **preprocess**
+### **预处理**
 
-First, we should generate our vocab file from dataset's transcripts file. Please reference code in [generate_vocab_file.py](generate_vocab_file.py). If you want train aishell data, you can use [generate_vocab_file_aishell.py](generate_vocab_file_aishell.py) directly.
+首先, 基于数据集的 transcripts 文件生成vocab 文件. 请参考 代码 [generate_vocab_file.py](generate_vocab_file.py). 如果你想训练 aishell 数据集, 你可以直接使用我写好的 [generate_vocab_file_aishell.py](generate_vocab_file_aishell.py).
 
 
 ```python
 python generate_vocab_file_aishell.py --input_file $DATA_DIR/data_aishell/transcript_v0.8.txt --output_file ./aishell_vocab.txt --mode character --vocab_size 5000
 ```
 
-it will create a vocab file named **aishell_vocab.txt** in your folder.
+它将创建好一个 vocab 文件， 在目录下命名为 **aishell_vocab.txt**.
 
 
-### **train** 
+### **训练** 
 
-Before training, you need to write your dataset code in package [dataset](dataset).
+在训练之前, 需要重写自己的dataset加载器的代码 in package [dataset](dataset).
 
-If you want use my aishell dataset code, you also should take care about the transcripts file path in [data/aishell.py](dataset/aishell.py) line 26:
+如果想使用我写好的aishell dataset 的加载器代码, 需要注意数据集里的 transcripts file 的路径配置，见 [data/aishell.py](dataset/aishell.py) 的第26行:
 
 ```python
 src_file = "/data/Speech/SLR33/data_aishell/" + "transcript/aishell_transcript_v0.8.txt"
 ```
 
-When ready. 
+当一切都准备好. 
 
-Let's train:
+就可以开始训练了:
 
 ```bash
 python main.py --config ./config/aishell_asr_example_lstm4atthead1.yaml
 ```
 
-you can write your config file, please reference [config/aishell_asr_example_lstm4atthead1.yaml](config/aishell_asr_example_lstm4atthead1.yaml)
+你可以自定义自己的配置文件, 可以参考 [config/aishell_asr_example_lstm4atthead1.yaml](config/aishell_asr_example_lstm4atthead1.yaml)
 
-specific variables: corpus's path & vocab_file
+特别注意的变量: corpus's path & vocab_file
 
-### **test**
+### **验证**
 
 ```bash
 python main.py --config ./config/aishell_asr_example_lstm4atthead1.yaml --test
@@ -118,13 +118,13 @@ python main.py --config ./config/aishell_asr_example_lstm4atthead1.yaml --test
 
 ------
 
-## **Pretrained**
+## **预训练模型**
 
-### **English**
+### **英文**
 
-### **Chinese Mandarin**
+### **中文普通话**
 
-a pretrained model training on AISHELL-Dataset
+在数据集AISHELL-Dataset上训练的一个中文语音识别 ASR 模型的预训练权重文件
 
 download from [Google Drive](https://drive.google.com/file/d/1Lcu6aFdoChvKEHuBs5_efNSk5edVkeyR/view?usp=sharing)
 
@@ -132,7 +132,7 @@ download from [Google Drive](https://drive.google.com/file/d/1Lcu6aFdoChvKEHuBs5
 
 ## **Demo**
 
-inference:
+推理:
 
 
 ```bash
@@ -141,7 +141,7 @@ python infer.py
 
 ------
 
-## **Reference**
+## **引用**
 
 1. [**Listen, Attend and Spell**](https://arxiv.org/abs/1508.01211v2), W Chan et al.
 2. [Neural Machine Translation of Rare Words with Subword Units](http://www.aclweb.org/anthology/P16-1162), R Sennrich et al.
@@ -151,6 +151,7 @@ python infer.py
 6. [Advances in Joint CTC-Attention based End-to-End Speech Recognition with a Deep CNN Encoder and RNN-LM](https://arxiv.org/abs/1706.02737), T Hori et al.
 
 ------
+
 
 ## **License**
 
