@@ -62,6 +62,7 @@ Components of the LAS End-to-End Model.
     - [**英文**](#英文)
     - [**中文普通话**](#中文普通话)
   - [**Demo**](#demo)
+  - [**Star-History**](#star-history)
   - [**引用**](#引用)
   - [**License**](#license)
 
@@ -138,6 +139,12 @@ download from [Google Drive](https://drive.google.com/file/d/1Lcu6aFdoChvKEHuBs5
 ```bash
 python infer.py
 ```
+
+------
+
+## **Star-History**
+
+![star-history](https://api.star-history.com/svg?repos=jackaduma/LAS_Mandarin_PyTorch&type=Date "star-history")
 
 ------
 

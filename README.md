@@ -62,6 +62,7 @@ Components of the LAS End-to-End Model.
     - [**English**](#english)
     - [**Chinese Mandarin**](#chinese-mandarin)
   - [**Demo**](#demo)
+  - [**Star-History**](#star-history)
   - [**Reference**](#reference)
   - [**License**](#license)
 
@@ -138,6 +139,12 @@ inference:
 ```bash
 python infer.py
 ```
+
+------
+
+## **Star-History**
+
+![star-history](https://api.star-history.com/svg?repos=jackaduma/LAS_Mandarin_PyTorch&type=Date "star-history")
 
 ------
 
